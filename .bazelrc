@@ -4,3 +4,11 @@ build --copt=-DGRPC_BAZEL_BUILD
 # abseil requires at least C++14, as of Jan 2023
 # https://github.com/abseil/abseil-cpp/releases/tag/20230125.3
 build --host_cxxopt=-std=c++17 --cxxopt=-std=c++17
+
+build --incompatible_enable_cc_toolchain_resolution
+
+# For macOS only:
+# Needed for Bazel versions before 7.
+build --features=-supports_dynamic_linker
+
+build --features=-libtool
